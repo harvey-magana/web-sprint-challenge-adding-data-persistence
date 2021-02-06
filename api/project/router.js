@@ -33,4 +33,22 @@ router.get('/:id', (req, res) => {
         })
 })
 
+router.post('/', (req, res) => {
+    const projData = req.body;
+
+    Project('project').insert(projData)
+        .then(ids => {
+            Project('project').where({ id: ids[0] })
+                .then(newProjEntry => {
+                    res.status(201).json(newProjEntry);
+                })
+        })
+        .catch(err => {
+            console.log('Post error', err);
+            res.status(500).json({
+                message: 'Faild to store the data.'
+            })
+        })
+})
+
 module.exports = router;
