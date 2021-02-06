@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
         })
         .catch(err => {
             res.status(500).json({
-                message: 'Error posting project.'
+                message: 'Error posting resource.'
             })
         })
 })
