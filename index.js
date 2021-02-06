@@ -9,8 +9,8 @@ server.listen(PORT, () => {
 
 //GO THROUGH THIS FIRST
 // 1. complete the index.js file *
-// 2. create the api and data directories 
-// 3. in the package.json file, add express, nodemon, helmet, knex, sqlite3 
+// 2. create the api and data directories *
+// 3. in the package.json file, add express, nodemon, helmet, knex, sqlite3 *
 // 4. in the package add the scripts so the project can be bootted up 
 // 5. in api, create a cars directory 
 // 6. in the cars directory, create a project-, resource-, task- -router.js files 
