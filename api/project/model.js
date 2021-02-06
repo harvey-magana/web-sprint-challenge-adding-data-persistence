@@ -10,19 +10,18 @@ module.exports = {
 
 
 async function get() {
-    const project = await db('projects').toString();
+    const project = await db('projects');
 
-    //const project = await db('projects');
     return project;
 }
 
 async function getById(id) {
-    const [account] = await db('projects').where({ id });
-    return account;
+    const [project] = await db('projects').where({ id });
+    return project;
 }
 
 async function insert(data) {
-    const [accountId] = await db('projects').insert(data);
-    const account = await getById(accountId);
-    return account;
+    const [projectId] = await db('projects').insert(data);
+    const project = await getById(projectId);
+    return project;
 }
