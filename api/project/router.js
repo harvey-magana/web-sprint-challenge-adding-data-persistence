@@ -1,54 +1,45 @@
 // build your `/api/projects` router here
 const express = require('express');
-
-const Project = require('./model.js');
-
 const router = express.Router();
+const Project = require('./model');
+
+
 
 // add GET and POST methods here for project endpoints
 
 router.get('/', (req, res) => {
-    Project('project')
-        .then(project => {
-            res.json(project)
+    Project.get(req.query)
+        .then(proj => {
+            res.status(200).json(proj)
         })
         .catch(err => {
             res.status(500).json({
-                message: 'Failed to retrieve project.'
+                message: 'Error retrieving project.'
             })
         })
-})
+});
 
 router.get('/:id', (req, res) => {
-    const { id } = req.params;
-
-    Project('project').where({ id }).first()
+    Project.getById(req.params.id)
         .then(proj => {
-            res.json(proj);
+            res.status(200).json(proj)
         })
         .catch(err => {
-            res.status(500).json({
-                message: 'Failed to retrieve project by id.'
-            })
+            error: 'Failed to retrieve project by id.'
         })
 })
 
 router.post('/', (req, res) => {
-    const projData = req.body;
-
-    Project('project').insert(projData)
-        .then(ids => {
-            Project('project').where({ id: ids[0] })
-                .then(newProjEntry => {
-                    res.status(201).json(newProjEntry);
-                })
+    Project.insert(req.body)
+        .then(proj => {
+            res.status(201).json(proj)
         })
         .catch(err => {
-            console.log('Post error', err);
             res.status(500).json({
-                message: 'Faild to store the data.'
+                message: 'Error posting project.'
             })
         })
 })
+
 
 module.exports = router;
