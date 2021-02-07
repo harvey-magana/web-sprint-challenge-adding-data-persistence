@@ -7,21 +7,7 @@ server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}...`);
 });
 
-//GO THROUGH THIS FIRST
 
-
-//19. next, run 'npx knex migrate:latest' 
-//19a. If the database is currently, in your data directory, this command will complain. 
-//To fix this, turn off your server, disconnect your database from your editor, delete the database from your data diretory, then 
-//run the command again and the command should be successful. 
-//In Postman, when you make a GET request, you will get back an empty array. This is good. Now you can post data to the table and you should 
-//see uew updates to the table. 
-//20. next run 'npx knex cars-schema' 
-//21. next, to start the seed directory and 
-//22. next, populate your knexfile.js file with the seeds part of of the object
-//23. in your terminal run 'npx knex seed:make 01-cars' 
-//24. in your terminal, run 'npx knex seed:run' 
-// if you want to add additional tables, you can do so with an additional migration but do this before seeding.
 
 // GO THROUGH THIS SECOND
 // 1. initialize project with 'npm install'
